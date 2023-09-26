@@ -4,28 +4,10 @@ const express = require("express");
 // Inicializa o aplicativo Express.
 const app = express();
 
-// Define uma rota que captura parâmetros na URL, como "/pedidos/123/produto".
-app.get("/pedidos/:id/:item", (request, response) => {
-  // Extrai os valores dos parâmetros da URL usando 'request.params'.
-  const { id, item } = request.params;
-
-  // Quando uma solicitação GET é feita para essa rota, envia uma resposta com os valores dos parâmetros.
-  response.send(`
-    Número do pedido: ${id}
-    Item pedido: ${item}
-  `);
-});
-
-// Define uma rota que usa query parameters na URL, como "/cardapio?page=1&limit=10".
-app.get("/cardapio", (request, response) => {
-  // Extrai os valores dos query parameters usando 'request.query'.
-  const { page, limit } = request.query;
-
-  // Quando uma solicitação GET é feita para essa rota, envia uma resposta com os valores dos query parameters.
-  response.send(`
-    Página: ${page}
-    Mostrar: ${limit}
-  `);
+// Define uma rota para /users no servidor que responde a solicitação POST.
+app.post("/users", (request, response) => {
+  // Quando uma solicitação POST é feita para a rota /users, envia uma resposta com o texto específicado.
+  response.send("Método POST funcionou!");
 });
 
 // Define a porta em que o servidor irá escutar as solicitações HTTP.
