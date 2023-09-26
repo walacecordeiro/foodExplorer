@@ -4,6 +4,12 @@ const express = require("express");
 // Inicializa o aplicativo Express.
 const app = express();
 
+// Define uma rota para a raiz do servidor (URL "/") que responde a solicitações GET.
+app.get("/", (request, response) => {
+  // Quando uma solicitação GET é feita para a raiz, envia uma resposta com o texto especificado.
+  response.send("Esse é o caminho para a raiz do servidor");
+});
+
 // Define a porta em que o servidor irá escutar as solicitações HTTP.
 const PORT = 3333;
 
