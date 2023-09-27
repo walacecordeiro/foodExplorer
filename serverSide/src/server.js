@@ -1,6 +1,9 @@
 // Importa o módulo 'express-async-errors' para lidar com erros assíncronos automaticamente.
 require("express-async-errors");
 
+// Importa o módulo 'sqlite' que estabelece a conexão com o banco de dados SQLite.
+const database = require("./database/sqlite");
+
 // Importa a classe 'AppError' que permite criar erros personalizados.
 const AppError = require("./utils/AppError");
 
@@ -19,6 +22,9 @@ app.use(express.json());
 // Adiciona as rotas definidas no módulo 'routes' ao aplicativo.
 app.use(routes);
 
+// Estabelece a conexão com o banco de dados SQLite.
+database();
+
 // Middlware de tratamento de erros personalizados.
 app.use((error, request, response, next) => {
   if (error instanceof AppError) {
@@ -29,7 +35,7 @@ app.use((error, request, response, next) => {
     });
   }
 
-  console.error(error)
+  console.error(error);
 
   // Se o erro não for uma instância de 'AppError', trata-o como erro interno de servidor.
   return response.status(500).json({
