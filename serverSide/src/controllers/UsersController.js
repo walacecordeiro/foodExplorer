@@ -4,8 +4,8 @@ class UsersController {
   create(request, response){
     // Extrai os dados do corpo da solicitação JSON usando 'request.body'.
     const { name, email, password } = request.body;
-    // Envia uma resposta JSON com os dados rebebidos no corpo da solicitação.
-    response.json({ name, email, password });
+    // Envia uma resposta JSON com os dados rebebidos no corpo da solicitação e define o código de status HTTP como 201 (created).
+    response.status(201).json({ name, email, password });
   }
 }
 
