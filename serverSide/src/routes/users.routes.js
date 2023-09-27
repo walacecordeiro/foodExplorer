@@ -23,7 +23,7 @@ const usersRoutes = Router();
 const usersController = new UsersController();
 
 // Define uma rota POST ("/") que delega o controle ao método 'create' do controlador de usuários.
-usersRoutes.post("/", myMiddleware, usersController.create);
+usersRoutes.post("/", usersController.create);
 
 // Exporta o roteador 'userRoutes' para ser utilizado em outros lugares do aplicativo.
 module.exports = usersRoutes;
