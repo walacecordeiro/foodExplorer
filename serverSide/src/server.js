@@ -1,19 +1,17 @@
 // Importa o módulo 'express' para criar um servidor web.
 const express = require("express");
 
+// Importa o módulo de rotas personalizadas de um arquivo chamado 'index.js' que está na pasta 'routes'.
+const routes = require("./routes");
+
 // Inicializa o aplicativo Express.
 const app = express();
 
 // Adiciona middleware para permitir o parsing de JSON no corpo das solicitações.
 app.use(express.json());
 
-// Define uma rota para /users no servidor que responde a solicitação POST.
-app.post("/users", (request, response) => {
-  // Extrai os dados do corpo da solicitação JSON usando 'request.body'.
-  const { name, email, password } = request.body;
-  // Envia uma resposta JSON com os dados rebebidos.
-  response.json({ name, email, password });
-});
+// Adiciona as rotas definidas no módulo 'routes' ao aplicativo.
+app.use(routes);
 
 // Define a porta em que o servidor irá escutar as solicitações HTTP.
 const PORT = 3333;
