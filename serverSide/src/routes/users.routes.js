@@ -1,16 +1,17 @@
 // Importa o módulo 'Router' do 'Express' para cirar um roteador.
 const { Router } = require("express");
 
+// Importa o controlador de usuários. que é uma classe responsável por gerenciar as operações relacionadas aos usuários.
+const UsersController = require("../controllers/UsersController");
+
 // Cria um novo roteador chamado 'userRoutes' específico para as rotas de usuário.
 const usersRoutes = Router();
 
-// Defini uma rota POST para a raiz do roteador '/users'.
-usersRoutes.post("/", (request, response) => {
-  // Extrai os dados do corpo da solicitação JSON usando 'request.body'.
-  const { name, email, password } = request.body;
-  // Envia uma resposta JSON com os dados rebebidos.
-  response.json({ name, email, password });
-});
+// Cria uma instância do controlador de usuários para lidar com as operações relacionadas aos usuários.
+const usersController = new UsersController();
+
+// Define uma rota POST ("/") que delega o controle ao método 'create' do controlador de usuários.
+usersRoutes.post("/", usersController.create);
 
 // Exporta o roteador 'userRoutes' para ser utilizado em outros lugares do aplicativo.
 module.exports = usersRoutes;
