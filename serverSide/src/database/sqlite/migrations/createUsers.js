@@ -6,7 +6,7 @@ const createUsers = `
     email VARCHAR,
     password VARCHAR,
     avatar VARCHAR NULL,
-    isAdmin BOOLEAN NULL,
+    isAdmin BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT (strftime('%d/%m/%Y às %H:%M', 'now', 'localtime')),
     updated_at TIMESTAMP DEFAULT (strftime('%d/%m/%Y às %H:%M', 'now', 'localtime'))
   )

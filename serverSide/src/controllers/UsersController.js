@@ -1,20 +1,35 @@
 // Importa a classe 'AppError' que permite criar erros personalizados.
 const AppError = require("../utils/AppError");
 
+const sqliteConnection = require("../database/sqlite");
+
 // Define uma classe chamada UsersController para gerenciar operações relacionadas a usuários.
 class UsersController {
   // Define um método 'create' que lida com a criação de usuários.
-  create(request, response) {
+  async create(request, response) {
     // Extrai os dados do corpo da solicitação JSON usando 'request.body'.
-    const { name, email, password } = request.body;
+    let { name, email, password, isAdmin } = request.body;
 
-    // Verifica se o campo 'name' não está vazio.
-    if (!name) {
-      // Se o campo 'name' estiver vazio, lança um erro personalizado usando a classe 'AppError'.
-      throw new AppError("Nome é obrigatório");
+    const database = await sqliteConnection();
+    const checkUserExists = await database.get(
+      "SELECT * FROM users WHERE email = (?)",
+      [email]
+    );
+
+    if (checkUserExists) {
+      throw new AppError("Este e-mail já está em uso.");
     }
-    // Envia uma resposta JSON com os dados rebebidos no corpo da solicitação e define o código de status HTTP como 201 (created).
-    response.status(201).json({ name, email, password });
+
+    if (isAdmin === undefined) {
+      isAdmin = false;
+    }
+
+    await database.run(
+      "INSERT INTO users (name, email, password, isAdmin) VALUES (?, ?, ?, ?)",
+      [name, email, password, isAdmin]
+    );
+
+    return response.status(201).json();
   }
 }
 
