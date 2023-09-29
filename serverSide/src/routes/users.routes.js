@@ -10,7 +10,7 @@ const usersRoutes = Router();
 // // Define um middleware que será executado antes do método 'create' do controlador.
 // function myMiddleware(request, response, next) {
 //   console.log("Passou pelo Middleware");
-  
+
 //   if (!request.body.isAdmin){
 //     return response.status(401).json({ message: "Você não tem acesso como administrador"})
 //   }
@@ -24,6 +24,7 @@ const usersController = new UsersController();
 
 // Define uma rota POST ("/") que delega o controle ao método 'create' do controlador de usuários.
 usersRoutes.post("/", usersController.create);
+usersRoutes.put("/:id", usersController.update);
 
 // Exporta o roteador 'userRoutes' para ser utilizado em outros lugares do aplicativo.
 module.exports = usersRoutes;
