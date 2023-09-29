@@ -110,9 +110,9 @@ class UsersController {
       name = ?,
       email = ?,
       password = ?,
-      updated_at = ?
+      updated_at = strftime('%d/%m/%Y às %H:%M', 'now', 'localtime')
       WHERE id = ?`,
-      [user.name, user.email, user.password, new Date(), id]
+      [user.name, user.email, user.password, id]
     );
 
     // Retorna uma resposta JSON vazia para indicar que a operação de atualização foi bem-sucedida.
