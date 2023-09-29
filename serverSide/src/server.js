@@ -1,8 +1,8 @@
 // Importa o módulo 'express-async-errors' para lidar com erros assíncronos automaticamente.
 require("express-async-errors");
 
-// Importa o módulo 'sqlite' que estabelece a conexão com o banco de dados SQLite.
-const database = require("./database/sqlite");
+// Importa a função 'migrationsRun' responsável por executar as migrações do banco de dados.
+const migrationsRun = require("./database/sqlite/migrations");
 
 // Importa a classe 'AppError' que permite criar erros personalizados.
 const AppError = require("./utils/AppError");
@@ -13,6 +13,9 @@ const express = require("express");
 // Importa o módulo de rotas personalizadas de um arquivo chamado 'index.js' que está na pasta 'routes'.
 const routes = require("./routes");
 
+// Executa as migrações do banco de dados para preparar a estrutura do banco de dados.
+migrationsRun();
+
 // Inicializa o aplicativo Express.
 const app = express();
 
@@ -21,9 +24,6 @@ app.use(express.json());
 
 // Adiciona as rotas definidas no módulo 'routes' ao aplicativo.
 app.use(routes);
-
-// Estabelece a conexão com o banco de dados SQLite.
-database();
 
 // Middlware de tratamento de erros personalizados.
 app.use((error, request, response, next) => {
