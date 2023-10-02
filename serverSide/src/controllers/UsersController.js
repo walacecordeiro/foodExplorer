@@ -77,8 +77,8 @@ class UsersController {
     }
 
     // Atualiza os campos 'name' e 'email' do usuário com os novos valores.
-    user.name = name;
-    user.email = email;
+    user.name = name ?? user.name;
+    user.email = email ?? user.email;
     
     // Verifica se uma nova senha (password) foi fornecida, mas a senha antiga (old_password) não foi fornecida.
     if (password && !old_password) {
