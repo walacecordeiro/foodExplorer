@@ -11,6 +11,7 @@ module.exports = {
     },
 
     migrations: {
+      // Define o diretório onde as migrações do banco de dados estão localizadas.
       directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
     },
 
