@@ -8,7 +8,12 @@ module.exports = {
       // Especifica o caminho para o arquivo do banco de dados SQLite.
       filename: path.resolve(__dirname, "src", "database", "database.db"),
       // Configura o uso de valores nulos como padrão.
-      useNullAsDefault: true,
     },
+
+    migrations: {
+      directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
+    },
+
+    useNullAsDefault: true,
   },
 };
