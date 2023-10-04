@@ -10,9 +10,19 @@ module.exports = {
       // Configura o uso de valores nulos como padrão.
     },
 
+    pool: {
+      afterCreate: (conn, cb) => conn.run("PRAGMA foreign_keys = ON", cb),
+    },
+
     migrations: {
       // Define o diretório onde as migrações do banco de dados estão localizadas.
-      directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
+      directory: path.resolve(
+        __dirname,
+        "src",
+        "database",
+        "knex",
+        "migrations"
+      ),
     },
 
     useNullAsDefault: true,
