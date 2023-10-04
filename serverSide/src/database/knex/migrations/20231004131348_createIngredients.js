@@ -6,6 +6,7 @@ exports.up = (knex) =>
     // Define uma coluna 'name' para armazenar o nome do prato como texto.
     table.text("name").notNullable();
 
+    // Define uma coluna 'dishes_id' para armazenar o ID do prato associado a esse ingrediente, com uma referência à tabela 'dishes' e opção de exclusão em cascata.
     table
       .integer("dishes_id")
       .references("id")

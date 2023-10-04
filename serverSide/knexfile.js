@@ -7,9 +7,9 @@ module.exports = {
     connection: {
       // Especifica o caminho para o arquivo do banco de dados SQLite.
       filename: path.resolve(__dirname, "src", "database", "database.db"),
-      // Configura o uso de valores nulos como padrão.
     },
 
+    // Define um pool de conexões que executará o comando 'PRAGMA foreign_keys = ON' após criar uma nova conexão.
     pool: {
       afterCreate: (conn, cb) => conn.run("PRAGMA foreign_keys = ON", cb),
     },
@@ -25,6 +25,7 @@ module.exports = {
       ),
     },
 
+    // Configura o uso de valores nulos como padrão.
     useNullAsDefault: true,
   },
 };
