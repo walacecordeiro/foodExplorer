@@ -39,6 +39,30 @@ class DishesController {
     // Retorna uma resposta vázia para indicar que a operação foi bem-sucedida.
     response.json();
   }
+
+  // Define um método 'show' para lidar com a exibição de detalhes de um prato específico.
+  async show(request, response) {
+    // Extrai o ID do prato da solicitação a partir dos parâmetros da URL.
+    const { id } = request.params;
+
+    // Consulta o banco de dados para obter os detalhes do prato com o ID fornecido.
+    const dishe = await knex("dishes").where({ id }).first();
+
+    // Consulta o banco de dados para obter as categorias associadas a este prato.
+    const category = await knex("category").where({ dishes_id: id });
+
+    // Consulta o banco de dados para obter os ingredientes associados a este prato, ordenados por nome.
+    const ingredients = await knex("ingredients")
+      .where({ dishes_id: id })
+      .orderBy("name");
+
+    // Retorna uma resposta JSON com os detalhes do prato, categorias e ingredientes.
+    return response.json({
+      ...dishe,
+      category,
+      ingredients
+    });
+  }
 }
 
 module.exports = DishesController;
