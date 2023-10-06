@@ -10,6 +10,8 @@ const dishesRoutes = Router();
 // Cria uma instância do controlador 'DishesController.js' para lidar com as operações relacionadas aos pratos.
 const dishesController = new DishesController();
 
+dishesRoutes.get("/", dishesController.index);
+
 // Define uma rota POST ("/:user_id") que delega o controle ao método 'create' do controlador 'DishesController.js'.
 dishesRoutes.post("/:user_id", dishesController.create);
 

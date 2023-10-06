@@ -75,6 +75,12 @@ class DishesController {
     // Retorna uma resposta JSON vazia para indicar que a exclusão foi bem-sucedida.
     return response.json();
   }
+
+  async index(request, response) {
+    const dishes = await knex("dishes").orderBy("created_at", "asc");
+
+    return response.json(dishes);
+  }
 }
 
 module.exports = DishesController;
