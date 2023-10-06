@@ -77,7 +77,9 @@ class DishesController {
   }
 
   async index(request, response) {
-    const dishes = await knex("dishes").orderBy("created_at", "asc");
+    const { name } = request.query;
+
+    const dishes = await knex("dishes").whereLike("name", `%${name}%`).orderBy("created_at", "asc");
 
     return response.json(dishes);
   }
