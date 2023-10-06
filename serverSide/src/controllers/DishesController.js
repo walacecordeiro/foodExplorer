@@ -60,8 +60,20 @@ class DishesController {
     return response.json({
       ...dishe,
       category,
-      ingredients
+      ingredients,
     });
+  }
+
+  // Define um método 'delete' que lida com a exclusão de um prato com base no ID.
+  async delete(request, response) {
+    // Obtém o ID do prato a ser excluído dos parâmetros da solicitação.
+    const { id } = request.params;
+
+    // Utiliza o Knex para executar uma operação de exclusão no banco de dados, onde o ID corresponde ao prato a ser excuído.
+    await knex("dishes").where({ id }).delete();
+
+    // Retorna uma resposta JSON vazia para indicar que a exclusão foi bem-sucedida.
+    return response.json();
   }
 }
 
