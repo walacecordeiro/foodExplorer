@@ -1,3 +1,4 @@
+const { Knex } = require("knex");
 const knex = require("../database/knex");
 
 class DishesController {
@@ -90,27 +91,66 @@ class DishesController {
         .split(",")
         .map((item) => item.trim());
 
-      // Usa o Knex para buscar pratos com base nos ingredientes especificados.
-      dishes = await knex("ingredients")
+      // Usa o Knex para buscar pratos com base nos ingredientes especificados e seus ingredientes associados.
+      dishes = await knex("dishes")
         .select([
           "dishes.id as dish_id",
           "dishes.name as dish_name",
           "ingredients.id as ingredient_id",
           "ingredients.name as ingredient_name",
+          "category.name as category_name",
         ])
+        .innerJoin("ingredients", "dishes.id", "ingredients.dishes_id")
+        .innerJoin("category", "dishes.id", "category.dishes_id")
         .whereIn("ingredients.name", filterIngredients)
-        .innerJoin("dishes", "dishes.id", "ingredients.dishes_id")
         .orderBy("dishes.name");
     } else {
       // Se 'ingredients' não estiver presente nos parâmetros de consulta, realiza uma busca por nome de prato.
-      // Usa o Knex para buscar pratos cujo nome corresponda ao valor fornecido.
+      // Usa o Knex para buscar pratos cujo nome corresponda ao valor fornecido, e seus ingredientes associados.
       dishes = await knex("dishes")
-        .whereLike("name", `%${name}%`)
-        .orderBy("created_at", "asc");
+        .select([
+          "dishes.id as dish_id",
+          "dishes.name as dish_name",
+          "ingredients.id as ingredient_id",
+          "ingredients.name as ingredient_name",
+          "category.name as category_name",
+        ])
+        .innerJoin("ingredients", "dishes.id", "ingredients.dishes_id")
+        .innerJoin("category", "dishes.id", "category.dishes_id")
+        .whereLike("dishes.name", `%${name}%`)
+        .orderBy("dishes.created_at", "asc");
     }
+    // Organiza os resultados em um formato adequado para retornar.
+    const formattedDishes = {};
+
+    dishes.map((dish) => {
+      const {
+        dish_id,
+        dish_name,
+        ingredient_id,
+        ingredient_name,
+        category_name,
+      } = dish;
+
+      if (!formattedDishes[dish_id]) {
+        formattedDishes[dish_id] = {
+          id: dish_id,
+          name: dish_name,
+          category: category_name,
+          ingredients: [],
+        };
+      }
+
+      if (ingredient_id) {
+        formattedDishes[dish_id].ingredients.push({
+          id: ingredient_id,
+          name: ingredient_name,
+        });
+      }
+    });
 
     // Retorna a lista dos pratos resultante em formato JSON como resposta.
-    return response.json(dishes);
+    return response.json(Object.values(formattedDishes));
   }
 }
 
