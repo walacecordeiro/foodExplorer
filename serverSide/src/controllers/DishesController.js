@@ -76,16 +76,21 @@ class DishesController {
     return response.json();
   }
 
+  // Define um método 'index' que lida com a busca de pratos com base em critérios, como nome e ingredientes.
   async index(request, response) {
+    // Obtem os parâmetros de consulta da solicitação, incluindo 'name' e 'ingredients'.
     const { name, ingredients } = request.query;
 
     let dishes;
 
     if (ingredients) {
+      // Se 'ingredients' estiver presente nos parâmetros de consulta, ele contém uma lista de ingredientes separados por vírgulas.
+      // Divide essa lista em um array de ingredientes.
       const filterIngredients = ingredients
         .split(",")
         .map((item) => item.trim());
 
+      // Usa o Knex para buscar pratos com base nos ingredientes especificados.
       dishes = await knex("ingredients")
         .select([
           "dishes.id as dish_id",
@@ -97,11 +102,14 @@ class DishesController {
         .innerJoin("dishes", "dishes.id", "ingredients.dishes_id")
         .orderBy("dishes.name");
     } else {
+      // Se 'ingredients' não estiver presente nos parâmetros de consulta, realiza uma busca por nome de prato.
+      // Usa o Knex para buscar pratos cujo nome corresponda ao valor fornecido.
       dishes = await knex("dishes")
         .whereLike("name", `%${name}%`)
         .orderBy("created_at", "asc");
     }
 
+    // Retorna a lista dos pratos resultante em formato JSON como resposta.
     return response.json(dishes);
   }
 }
