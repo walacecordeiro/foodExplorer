@@ -1,4 +1,3 @@
-const { Knex } = require("knex");
 const knex = require("../database/knex");
 
 class DishesController {
