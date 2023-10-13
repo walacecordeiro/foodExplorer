@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+  :root {
+    font-size: 62.5%;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -10,6 +14,25 @@ export default createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.COLORS.Dark_400};
     color: ${({ theme }) => theme.COLORS.Light_300};
+
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body, input, button, textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+  }
+  
+  h1 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h3 {
+    font-family: 'Poppins', sans-serif;
   }
 
   a {
