@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const Container = styled.header`
   grid-area: header;
 
-  height: 10.4rem;
+  height: 11.4rem;
   width: 100%;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 3.2rem;
 
-  padding: 2.8rem 0;
+  padding: 2.8rem 2.8rem;
   background-color: ${({ theme }) => theme.COLORS.Dark_600};
 
   > svg {
