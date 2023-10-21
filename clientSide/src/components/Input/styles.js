@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: clamp(26rem, 50%, 58.1rem);
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@ export const Container = styled.div`
   border-radius: 0.5rem;
 
   > input {
-    width: clamp(10rem, 50%, 28rem);
+    width: 100%;
     height: 4.8rem;
     padding: 1.4rem;
 
@@ -26,5 +26,10 @@ export const Container = styled.div`
   > svg {
     width: 2rem;
     height: 2rem;
+    margin-left: 1.4rem;
+
+    path {
+      stroke: ${({theme}) => theme.COLORS.Light_400};
+    }
   }
 `;

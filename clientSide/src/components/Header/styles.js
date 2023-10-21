@@ -5,13 +5,12 @@ export const Container = styled.header`
 
   height: 11.4rem;
   width: 100%;
+  padding: 2.8rem;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 3.2rem;
 
-  padding: 2.8rem 2.8rem;
   background-color: ${({ theme }) => theme.COLORS.Dark_600};
 
   > svg {
