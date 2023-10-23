@@ -35,6 +35,10 @@ export default createGlobalStyle`
     font-family: 'Poppins', sans-serif;
   }
 
+  ul {
+    list-style: none;
+  }
+
   a {
     text-decoration: none;
     color: inherit;

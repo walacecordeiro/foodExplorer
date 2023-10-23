@@ -4,7 +4,7 @@ export const Container = styled.footer`
   grid-area: footer;
 
   height: 7.7rem;
-  width: 100vw;
+  width: 100%;
 
   font-size: 1.2rem;
 
