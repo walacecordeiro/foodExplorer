@@ -52,4 +52,18 @@ export default createGlobalStyle`
   button:hover, a:hover {
     filter: brightness(0.9);
   }
+
+  *::-webkit-scrollbar {
+    width: .3rem;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #065e7c;
+    border-radius: 0px;
+    border: 3px none #ffffff;
+  }
 `;

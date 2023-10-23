@@ -6,28 +6,16 @@ export const Container = styled.div`
 
   display: grid;
   grid-template-rows: 11.4rem auto 7.7rem;
-  grid-template-areas: 
-  "header"
-  "content"
-  "footer"
-  ;
-
-  > main a {
-    width: fit-content;
-    align-self: normal;
-  }
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
 
   > main {
-    margin: 1.6rem 3.2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    grid-area: content;
+    overflow-y: scroll;
 
-  > main img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 1.6rem;
+    padding: 1.6rem 3.2rem;
   }
 `;
 
@@ -45,5 +33,22 @@ export const Ingredients = styled.ul`
     background-color: ${({theme}) => theme.COLORS.Dark_1000};
     padding: .4rem .8rem;
     border-radius: .5rem;
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > a:first-child {
+    width: fit-content;
+    align-self: normal;
+  }
+
+  > img:nth-child(2) {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1.6rem;
   }
 `;
