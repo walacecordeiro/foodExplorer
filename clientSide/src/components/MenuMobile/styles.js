@@ -17,8 +17,8 @@ export const Container = styled.section`
   transition: 0.5s;
   transform: translateX(-5rem);
 
-  ${({ isVisible }) =>
-    isVisible &&
+  ${({ $isVisible }) =>
+    $isVisible &&
     css`
       opacity: 1;
       pointer-events: auto;
@@ -38,8 +38,8 @@ export const Container = styled.section`
       transition: 0.7s;
     }
 
-    ${({ isVisible }) =>
-      isVisible &&
+    ${({ $isVisible }) =>
+      $isVisible &&
       css`
         > svg {
           transform: rotate(0deg);

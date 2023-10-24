@@ -15,7 +15,7 @@ export function Header() {
       setMenuIsVisible={setMenuIsVisible}
       />
       <Container>
-        <FiMenu width={24} height={18} onClick={() => setMenuIsVisible(true)}/>
+        <FiMenu width={24} height={18} onClick={() => setMenuIsVisible(true.toString())}/>
         <Logo />
       </Container>
     </>

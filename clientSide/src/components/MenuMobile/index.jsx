@@ -12,7 +12,7 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible }) {
     document.body.style.overflowY = menuIsVisible ? "hidden" : "auto";
   }, [menuIsVisible]);
   return (
-    <Container isVisible={menuIsVisible}>
+    <Container $isVisible={menuIsVisible}>
       <div>
         <AiOutlineClose size={18} onClick={() => setMenuIsVisible(false)} />
         <span>Menu</span>
