@@ -4,7 +4,7 @@ export const Container = styled.section`
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 5;
+  z-index: ${({ $isVisible }) => ($isVisible ? 99 : 0)};
 
   background-color: ${({ theme }) => theme.COLORS.Dark_400};
 
