@@ -1,4 +1,5 @@
-import { Container, Form } from "./styles";
+import { Container } from "./styles";
+import { Form } from "../../components/Form";
 import { Logo } from "../../components/Logo";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
