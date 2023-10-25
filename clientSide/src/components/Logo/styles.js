@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  gap: .8rem;
+  gap: 0.8rem;
 
   > img {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: ${({ $width }) => $width}rem;
+    height: ${({ $height }) => $height}rem;
   }
-  
+
   > h2 {
     position: relative;
     font-family: "Roboto", sans-serif;
