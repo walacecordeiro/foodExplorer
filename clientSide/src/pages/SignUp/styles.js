@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100vh;
-
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,10 +15,11 @@ export const Container = styled.div`
   :first-child h2 {
     font-size: 3.7rem;
   }
-  > :last-child {
+
+  > :last-child{
     font-size: 1.4rem;
   }
-`;
+  `;
 
 export const Form = styled.form`
   width: clamp(31.6rem, 80%, 34.8rem);
