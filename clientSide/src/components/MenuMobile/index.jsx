@@ -19,6 +19,7 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible }) {
       </div>
       <div>
         <Input
+          id="search"
           icon={GrSearch}
           placeholder="Busque por pratos ou ingredientes"
         />
