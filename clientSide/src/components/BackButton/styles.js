@@ -7,5 +7,4 @@ export const Container = styled.a`
   align-self: flex-start;
 
   font-family: "Poppins", sans-serif;
-  font-size: 2.4rem;
 `;

@@ -9,6 +9,10 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.Dark_900};
   border-radius: 0.5rem;
 
+  &:focus-within {
+    outline: 1px solid ${({ theme }) => theme.COLORS.Cake_100};
+  }
+
   > input {
     width: 100%;
     height: 4.8rem;
@@ -18,10 +22,6 @@ export const Container = styled.div`
     background-color: transparent;
     border: none;
     outline: none;
-
-    &::placeholder {
-      color: ${({ theme }) => theme.COLORS.Light_500};
-    }
   }
   > svg {
     width: 2rem;
@@ -29,7 +29,7 @@ export const Container = styled.div`
     margin-left: 1.4rem;
 
     path {
-      stroke: ${({theme}) => theme.COLORS.Light_400};
+      stroke: ${({ theme }) => theme.COLORS.Light_400};
     }
   }
 `;
