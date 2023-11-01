@@ -17,7 +17,7 @@ export const Container = styled.div`
     outline: none;
     appearance: none;
 
-    color: ${({ theme }) => theme.COLORS.Light_500};
+    color: ${({ theme }) => theme.COLORS.Light_100};
     background-color: ${({ theme }) => theme.COLORS.Dark_900};
     border: none;
   }

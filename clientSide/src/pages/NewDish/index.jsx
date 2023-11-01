@@ -5,6 +5,7 @@ import { Form } from "../../components/Form";
 import { FiUpload } from "react-icons/fi";
 import { BiSolidChevronDown } from "react-icons/bi";
 import { MySelect } from "../../components/MySelect";
+import { TextArea } from "../../components/TextArea";
 import { Input } from "../../components/Input";
 import { Footer } from "../../components/Footer";
 
@@ -18,11 +19,7 @@ export function NewDish() {
           <h2>Adicionar prato</h2>
           <Form>
             <label htmlFor="img">Imagem do prato</label>
-            <Input
-              name="img"
-              icon={FiUpload}
-              placeholder="Selecione imagem para altera-la"
-            />
+            <Input type="file" accept="image/*" name="img" icon={FiUpload} />
 
             <label htmlFor="dishName">Nome</label>
             <Input name="dishName" placeholder="Ex.: Salada Ceasar" />
@@ -38,8 +35,12 @@ export function NewDish() {
               <BiSolidChevronDown />
             </MySelect>
 
-            <label htmlFor="dishName">Nome</label>
-            <Input id="dishName" placeholder="Ex.: Salada Ceasar" />
+            <label htmlFor="dishIngredients">Ingredientes</label>
+            <Input id="dishIngredients" placeholder="Ex.: Salada Ceasar" />
+
+            <label htmlFor="dishDescription">Ingredientes</label>
+            <TextArea id="dishDescription" placeholder="Ex.: Este prato é uma opção refrescante para o verão" />
+
           </Form>
         </Content>
       </main>

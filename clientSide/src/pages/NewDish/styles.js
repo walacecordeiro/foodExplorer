@@ -18,9 +18,22 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled.div`  
+export const Content = styled.div`
   > h2 {
     margin-top: 3.5rem;
     font-weight: 500;
+  }
+
+  input[type="file"] {
+    position: relative;
+  }
+
+  input[type="file"]::-webkit-file-upload-button {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    top: 0;
+    background-color: red;
   }
 `;
