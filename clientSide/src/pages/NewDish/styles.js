@@ -36,4 +36,9 @@ export const Content = styled.div`
     top: 0;
     background-color: red;
   }
+
+  .buttonForm {
+    background-color: ${({ theme }) => theme.COLORS.Tomato_400};
+    font-weight: 500;
+  }
 `;

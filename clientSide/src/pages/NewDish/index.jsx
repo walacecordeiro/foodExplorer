@@ -5,8 +5,10 @@ import { Form } from "../../components/Form";
 import { FiUpload } from "react-icons/fi";
 import { BiSolidChevronDown } from "react-icons/bi";
 import { MySelect } from "../../components/MySelect";
+import { Ingredients } from "../../components/Ingredients";
 import { TextArea } from "../../components/TextArea";
 import { Input } from "../../components/Input";
+import { Button } from "../../components/Button"
 import { Footer } from "../../components/Footer";
 
 export function NewDish() {
@@ -35,12 +37,24 @@ export function NewDish() {
               <BiSolidChevronDown />
             </MySelect>
 
-            <label htmlFor="dishIngredients">Ingredientes</label>
-            <Input id="dishIngredients" placeholder="Ex.: Salada Ceasar" />
+            <label htmlFor="ingredients">Ingredientes</label>
 
-            <label htmlFor="dishDescription">Ingredientes</label>
-            <TextArea id="dishDescription" placeholder="Ex.: Este prato é uma opção refrescante para o verão" />
+            <section name="ingredients">
+              <Ingredients value="Pão Naan" />
+              <Ingredients value="Pão Naan" />
+              <Ingredients isNew placeholder="Adicionar" />
+            </section>
 
+            <label htmlFor="price">Preço</label>
+            <Input name="price" placeholder="Ex.: R$ 40,00" />
+
+            <label htmlFor="description">Descrição</label>
+            <TextArea
+              name="description"
+              placeholder="Ex.: Este prato é uma opção refrescante para o verão"
+            />
+
+            <Button label="Adicionar prato" className="buttonForm"/>
           </Form>
         </Content>
       </main>
