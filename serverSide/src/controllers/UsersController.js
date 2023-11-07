@@ -51,14 +51,15 @@ class UsersController {
     // Extrai os dados do corpo da solicitação JSON, incluindo 'name', 'email', 'password' e 'old_password'.
     const { name, email, password, old_password } = request.body;
 
-    // Extrai o ID do usuário a ser atualizado dos parâmetros da URL.
-    const { id } = request.params;
+    const user_id = request.user.id;
 
     // Estabelece uma conexão com o banco de dados SQLite.
     const database = await sqliteConnection();
 
     // Procura o usuário com base no ID fornecido.
-    const user = await database.get("SELECT * FROM users WHERE id = (?)", [id]);
+    const user = await database.get("SELECT * FROM users WHERE id = (?)", [
+      user_id
+    ]);
 
     // Se o usuário não for encontrado, lança um erro personalizado.
     if (!user) {
@@ -68,7 +69,7 @@ class UsersController {
     // Verifica se o e-mail atualizado já está em uso por outro usuário, excluindo o próprio usuário.
     const userWithUpdatedEmail = await database.get(
       "SELECT * FROM users WHERE email = (?) AND id != (?)",
-      [email, id]
+      [email, user_id]
     );
 
     // Se o e-mail já estiver em uso, lança um erro personalizado.
@@ -79,7 +80,7 @@ class UsersController {
     // Atualiza os campos 'name' e 'email' do usuário com os novos valores.
     user.name = name ?? user.name;
     user.email = email ?? user.email;
-    
+
     // Verifica se uma nova senha (password) foi fornecida, mas a senha antiga (old_password) não foi fornecida.
     if (password && !old_password) {
       // Se a senha antiga não foi fornecida, lança um erro personalizado indicando que ela é necessária para definir uma nova senha.
@@ -112,7 +113,7 @@ class UsersController {
       password = ?,
       updated_at = strftime('%d/%m/%Y às %H:%M', 'now', 'localtime')
       WHERE id = ?`,
-      [user.name, user.email, user.password, id]
+      [user.name, user.email, user.password, user_id]
     );
 
     // Retorna uma resposta JSON vazia para indicar que a operação de atualização foi bem-sucedida.
