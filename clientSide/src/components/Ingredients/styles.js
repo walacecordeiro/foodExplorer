@@ -14,6 +14,7 @@ export const Container = styled.div`
 
   color: ${({ theme }) => theme.COLORS.Light_100};
 
+
   > input {
     width: 100%;
 

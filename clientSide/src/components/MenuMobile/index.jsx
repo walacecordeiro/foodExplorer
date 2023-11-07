@@ -4,8 +4,8 @@ import { Container } from "./styles";
 import { AiOutlineClose } from "react-icons/ai";
 import { GrSearch } from "react-icons/gr";
 import { Input } from "../Input";
-import { Footer } from "../Footer";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export function MenuMobile({ menuIsVisible, setMenuIsVisible }) {
   useEffect(() => {
@@ -24,7 +24,7 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible }) {
           placeholder="Busque por pratos ou ingredientes"
         />
         <nav>
-          <a href="#">Novo prato</a>
+          <Link to="/novo-prato">Novo prato</Link>
           <a href="#">Sair</a>
         </nav>
       </div>

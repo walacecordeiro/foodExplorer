@@ -20,4 +20,8 @@ export const Container = styled.button`
   &:disabled {
     opacity: 0.5;
   }
+
+  &:focus {
+    outline: 1px solid ${({ theme }) => theme.COLORS.Cake_100};
+  }
 `;

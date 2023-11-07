@@ -1,11 +1,14 @@
 import { Container } from "./styles";
-import { PiCaretLeftBold } from "react-icons/pi"
+import { PiCaretLeftBold } from "react-icons/pi";
 
-export function BackButton(){
-  return(
-    <Container>
-      <PiCaretLeftBold size={22}/>
+export function BackButton() {
+  const handleGoBack = () => {
+    window.history.back();
+  };
+  return (
+    <Container onClick={handleGoBack}>
+      <PiCaretLeftBold size={22} />
       voltar
     </Container>
-  )
+  );
 }

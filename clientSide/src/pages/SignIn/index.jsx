@@ -3,12 +3,12 @@ import { Form } from "../../components/Form";
 import { Logo } from "../../components/Logo";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { TextButton } from "../../components/TextButton";
+import { Link } from "react-router-dom";
 
 export function SignIn() {
   return (
     <Container>
-      <Logo $width={43} $height={43}/>
+      <Logo $width={43} $height={43} />
       <Form>
         <label htmlFor="email">Email</label>
         <Input id="email" placeholder="Exemplo: exemplo@exemplo.com" />
@@ -18,7 +18,9 @@ export function SignIn() {
 
         <Button label="Entrar" />
       </Form>
-      <TextButton text="Criar uma conta" />
+      <Link to="/cadastrar">
+        Criar uma conta
+      </Link>
     </Container>
   );
 }

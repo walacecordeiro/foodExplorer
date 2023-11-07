@@ -21,15 +21,15 @@ export function NewDish() {
           <h2>Adicionar prato</h2>
           <Form>
             <label htmlFor="img">Imagem do prato</label>
-            <Input type="file" accept="image/*" name="img" icon={FiUpload} />
+            <Input type="file" accept="image/*" id="img" icon={FiUpload} />
 
             <label htmlFor="dishName">Nome</label>
-            <Input name="dishName" placeholder="Ex.: Salada Ceasar" />
+            <Input id="dishName" placeholder="Ex.: Salada Ceasar" />
 
             <label htmlFor="dishCategory">Categoria</label>
 
             <MySelect>
-              <select name="dishCategory" id="">
+              <select id="dishCategory">
                 <option value="opt1">Refeição</option>
                 <option value="opt2">opt2</option>
                 <option value="opt3">opt3</option>
@@ -37,24 +37,24 @@ export function NewDish() {
               <BiSolidChevronDown />
             </MySelect>
 
-            <label htmlFor="ingredients">Ingredientes</label>
+            <label htmlFor="ingredient">Ingredientes</label>
 
-            <section name="ingredients">
-              <Ingredients value="Pão Naan" />
-              <Ingredients value="Pão Naan" />
+            <section id="ingredient">
+              <Ingredients value="Pão Naan" tabindex="-1"/>
+              <Ingredients value="Pão Naan" tabindex="-1"/>
               <Ingredients isNew placeholder="Adicionar" />
             </section>
 
             <label htmlFor="price">Preço</label>
-            <Input name="price" placeholder="Ex.: R$ 40,00" />
+            <Input id="price" placeholder="Ex.: R$ 40,00" />
 
             <label htmlFor="description">Descrição</label>
             <TextArea
-              name="description"
+              id="description"
               placeholder="Ex.: Este prato é uma opção refrescante para o verão"
             />
 
-            <Button label="Adicionar prato" className="buttonForm"/>
+            <Button label="Adicionar prato" className="buttonForm" />
           </Form>
         </Content>
       </main>
