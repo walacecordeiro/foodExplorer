@@ -5,12 +5,14 @@ const { Router } = require("express");
 const usersRouter = require("./users.routes");
 // Importa as rotas relacionadas aos pratos do arquivo 'dishes.routes.js'.
 const dishesRouter = require("./dishes.routes");
+const sessionsRouter = require("./sessions.routes");
 
 // Cria um novo roteador chamado 'routes'.
 const routes = Router();
 
 // Define que as rotas relacionadas aos usuários estarão sob o caminho '/users'.
 routes.use("/users", usersRouter);
+routes.use("/sessions", sessionsRouter);
 // Define que as rotas relacionadas aos pratos estarão sob o caminho '/dishes'.
 routes.use("/dishes", dishesRouter);
 

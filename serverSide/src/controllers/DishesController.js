@@ -37,7 +37,7 @@ class DishesController {
     await knex("ingredients").insert(ingredientsInsert);
 
     // Retorna uma resposta vázia para indicar que a operação foi bem-sucedida.
-    response.json();
+    return response.json();
   }
 
   // Define um método 'show' para lidar com a exibição de detalhes de um prato específico.
