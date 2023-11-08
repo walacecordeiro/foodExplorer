@@ -1,11 +1,13 @@
 const knex = require("../database/knex");
+const AppError = require("../utils/AppError");
+const DiskStorage = require("../providers/DiskStorage");
 
 class DishesController {
   async create(request, response) {
     // Extrai os dados do corpo da solicitação.
     const { name, description, category, ingredients, price } = request.body;
 
-    const  user_id = request.user.id;
+    const user_id = request.user.id;
 
     // Insere os dados do prato na tabela 'dishes' e obtém o ID gerado.
     const [dishes_id] = await knex("dishes").insert({
@@ -38,6 +40,32 @@ class DishesController {
 
     // Retorna uma resposta vázia para indicar que a operação foi bem-sucedida.
     return response.json();
+  }
+
+  async update(request, response) {
+    const { id } = request.params;
+    const imageFileName = request.file.filename;
+
+    const diskStorage = new DiskStorage();
+
+    const dish = await knex("dishes").where({ id }).first();
+
+    if (!dish) {
+      throw new AppError(
+        "Este prato não existe, não está em nossa base de dados"
+      );
+    }
+
+    if (dish.image) {
+      await diskStorage.deleteFile(dish.image);
+    }
+
+    const filename = await diskStorage.saveFile(imageFileName);
+    dish.image = filename;
+
+    await knex("dishes").update(dish).where({ id });
+
+    return response.json(dish);
   }
 
   // Define um método 'show' para lidar com a exibição de detalhes de um prato específico.
