@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useAuth } from "../../hooks/auth";
+
 import { Container } from "./styles";
 import { AiOutlineClose } from "react-icons/ai";
 import { GrSearch } from "react-icons/gr";
@@ -8,6 +10,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export function MenuMobile({ menuIsVisible, setMenuIsVisible }) {
+  const { signOut } = useAuth();
   useEffect(() => {
     document.body.style.overflowY = menuIsVisible ? "hidden" : "auto";
   }, [menuIsVisible]);
@@ -25,10 +28,9 @@ export function MenuMobile({ menuIsVisible, setMenuIsVisible }) {
         />
         <nav>
           <Link to="/novo-prato">Novo prato</Link>
-          <a href="#">Sair</a>
+          <a onClick={signOut}>Sair</a>
         </nav>
       </div>
-      
     </Container>
   );
 }
