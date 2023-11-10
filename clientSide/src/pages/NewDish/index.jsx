@@ -40,8 +40,8 @@ export function NewDish() {
             <label htmlFor="ingredient">Ingredientes</label>
 
             <section id="ingredient">
-              <Ingredients value="Pão Naan" tabindex="-1"/>
-              <Ingredients value="Pão Naan" tabindex="-1"/>
+              <Ingredients value="Pão Naan" tabIndex="-1"/>
+              <Ingredients value="Pão Naan" tabIndex="-1"/>
               <Ingredients isNew placeholder="Adicionar" />
             </section>
 
