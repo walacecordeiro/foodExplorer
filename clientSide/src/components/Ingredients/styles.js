@@ -4,11 +4,11 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
 
-  background-color: ${({ theme, isNew }) =>
-    isNew ? "transparent" : theme.COLORS.Light_600};
+  background-color: ${({ theme, $isNew }) =>
+    $isNew ? "transparent" : theme.COLORS.Light_600};
   border-radius: 0.8rem;
-  border: ${({ theme, isNew }) =>
-    isNew
+  border: ${({ theme, $isNew }) =>
+    $isNew
       ? `1px dashed ${theme.COLORS.Light_600}`
       : `1px solid ${theme.COLORS.Light_600}`};
 
@@ -18,8 +18,8 @@ export const Container = styled.div`
   > input {
     width: 100%;
 
-    background-color: ${({ theme, isNew }) =>
-      isNew ? "transparent" : theme.COLORS.Light_600};
+    background-color: ${({ theme, $isNew }) =>
+      $isNew ? "transparent" : theme.COLORS.Light_600};
     color: ${({ theme }) => theme.COLORS.Light_100};
 
     padding: .8rem 0 .8rem .8rem;
@@ -33,10 +33,10 @@ export const Container = styled.div`
     border: none;
     background: none;
     margin: 0 1.6rem;
-    background-color: ${({ theme, isNew }) =>
-      isNew ? "transparent" : theme.COLORS.Light_600};
-    color: ${({ theme, isNew }) =>
-      isNew ? theme.COLORS.Light_500 : theme.COLORS.Light_100};
+    background-color: ${({ theme, $isNew }) =>
+      $isNew ? "transparent" : theme.COLORS.Light_600};
+    color: ${({ theme, $isNew }) =>
+      $isNew ? theme.COLORS.Light_500 : theme.COLORS.Light_100};
 
     &:focus-within {
       outline: 1px solid ${({ theme }) => theme.COLORS.Cake_100};

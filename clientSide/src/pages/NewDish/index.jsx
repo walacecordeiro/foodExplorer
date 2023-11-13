@@ -42,7 +42,7 @@ export function NewDish() {
             <section id="ingredient">
               <Ingredients value="Pão Naan" tabIndex="-1"/>
               <Ingredients value="Pão Naan" tabIndex="-1"/>
-              <Ingredients isNew placeholder="Adicionar" />
+              <Ingredients $isNew placeholder="Adicionar" />
             </section>
 
             <label htmlFor="price">Preço</label>
